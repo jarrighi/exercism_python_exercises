@@ -1,34 +1,27 @@
 
 class Bob:
+  
+  def hey(self, to_bob):
+    # to_bob should be a string representing an expression said to Bob.
+    # Remove spaces since they aren't relevant to the logic of Bob's reponse.
+    to_bob = to_bob.strip()
+    return self.bobs_response(to_bob)
 
-  def hey(self, what_I_say_to_bob):
-    # Spaces are meaningless. Remove them.
-    what_I_say_to_bob = what_I_say_to_bob.strip()
+  def bobs_response(self, to_bob):
+    # Check if anything meaningful was said to Bob
+    if len(to_bob):
 
-    if len(what_I_say_to_bob) > 0:
+      # A string that is all caps indicates yelling
+      if to_bob.upper() == to_bob and to_bob.lower() != to_bob:
+        return 'Woah, chill out!'
 
-      if ( what_I_say_to_bob.upper() == what_I_say_to_bob 
-           and what_I_say_to_bob.lower() != what_I_say_to_bob ):
-        return self.when_yelled_at()
-
-      elif what_I_say_to_bob[-1] == '?':
-        return self.when_asked_a_question()
+      # A string ending in '?' indicates a question.
+      elif to_bob[-1] == '?':
+        return 'Sure.'
 
       else:
-        return self.default_response()
+        return 'Whatever.'
 
-    elif len(what_I_say_to_bob) == 0:
-      return self.when_ignored()
-    
-
-  def when_asked_a_question(self):
-    return 'Sure.'
-
-  def when_yelled_at(self):
-    return 'Woah, chill out!'
-
-  def when_ignored(self):
-    return 'Fine. Be that way!'
-
-  def default_response(self):
-    return 'Whatever.'
+    # Bob doesn't like the silent treatment
+    else:
+      return 'Fine. Be that way!'
