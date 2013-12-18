@@ -12,11 +12,11 @@ class Bob:
     if len(to_bob):
 
       # A string that is all caps indicates yelling
-      if to_bob.upper() == to_bob and to_bob.lower() != to_bob:
+      if to_bob.isupper():
         return 'Woah, chill out!'
 
       # A string ending in '?' indicates a question.
-      elif to_bob[-1] == '?':
+      elif to_bob.endswith('?'):
         return 'Sure.'
 
       else:
