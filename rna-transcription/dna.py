@@ -1,14 +1,9 @@
-class DNA:
-  def __init__(self, strand):
-    self.dna_strand = strand
-    self.dna_to_rna = {'G': 'G', 'C':'C', 'A': 'A', 'T': 'U'}
+class DNA(object):
+
+  def __init__(self, dna_strand):
+    self.dna_strand = dna_strand
+
 
   def to_rna(self):
-    rna_strand = ''
-    for bp in self.dna_strand:
-      try: 
-        rna_strand += self.dna_to_rna[bp]
-      except KeyError:
-        print "Error: Invalid Polymer"
-        return
+    rna_strand = self.dna_strand.replace('T', 'U')
     return rna_strand
